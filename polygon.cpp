@@ -3,8 +3,8 @@
 using namespace std;
 struct Point 
 {
-    int x;
-    int y;
+    double x;
+    double y;
 };
 
 int isLeft( Point P0, Point P1, Point P2 )
@@ -32,8 +32,8 @@ int Pnt_Poly( Point P, Point* V, int n )
 }
 int main() {
     struct Point P;
-    int n = 4;
-    struct Point V[4]={{1,2},{3,5},{4,6},{12,5}}; 
+    int n = 5;
+    struct Point V[5]={{-3,2},{-2,-0.8}, {0,1.2}, {2.2,0}, {2,4.5}}; 
     cin >> P.x >> P.y ;     
     int res = Pnt_Poly(P , V , n) ;
     if(res==0){
