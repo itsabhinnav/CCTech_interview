@@ -1,12 +1,12 @@
-class Point:
-    def __init__(self,x,y):
+class Point:                   
+    def __init__(self,x,y): """ Point class to hold the coordinates """
         self.x = x
         self.y = y
 
 def isLeft(P0,P1,P2 ):
     return (P1.x - P0.x) * (P2.y - P0.y) - (P2.x -  P0.x) * (P1.y - P0.y) 
 
-def PntInPoly( P, V ):
+def PntInPoly( P, V ):    """ Function to calculate the location of point """
     n=0
     for i in range(0,len(V)-1): 
         if V[i].y <= P.y :         
@@ -18,14 +18,15 @@ def PntInPoly( P, V ):
                  if isLeft( V[i], V[i+1], P) < 0: 
                     n=n-1  
     return n
-s=input()
+
+s=input() 
 v=[float(i) for i in s[s.find('[')+1:s.rfind(']')].replace('[',"").replace(']',"").split(',')]
-vertices=[]
+vertices=[]         """ vetices list for polygon's coordinates """
 for i in range(0,len(v)//2):
     temp= Point(v[2*i],v[2*i+1])
     vertices.append(temp)
 t=input()
 p=[float(i) for i in t[t.find('[')+1:t.rfind(']')].split(',')]
-point=Point(p[0],p[1])
-res=PntInPoly(point,vertices)
+point=Point(p[0],p[1])  """ Point in consideration """
+res=PntInPoly(point,vertices)  
 print(False if res==0 else True)
