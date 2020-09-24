@@ -2,6 +2,7 @@ class Point:
     def __init__(self,x,y): 
         self.x = x
         self.y = y
+
 def iv(P0,P1,C0,C1):
   y = ((P1.y-P0.y) / (P1.x-P0.x)) * (C0.x-P0.x) + P0.y
   x = C0.x
@@ -19,6 +20,7 @@ def vd(p0,p1):
 
 def hd(p0,p1):
   return abs(p1.x-p0.x) 
+  
 s=input() 
 v=[float(i) for i in s[s.find('[')+2:s.rfind(']')-1].replace('[',"").replace(']',"").split(',')]
 vertices=[]        
