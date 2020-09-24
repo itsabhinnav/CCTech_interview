@@ -1,6 +1,10 @@
 #include<iostream>
+#include<sstream>
+#include<ctype.h>
+#include<vector>
 
 using namespace std;
+
 struct Point 
 {
     double x;
@@ -13,33 +17,56 @@ int isLeft( Point P0, Point P1, Point P2 )
             - (P2.x -  P0.x) * (P1.y - P0.y) );
 }
 
-int Pnt_Poly( Point P, Point* V, int n )
+int Pnt_Poly( Point P, Point* V )
 {
-    int    wn = 0;    
-    for (int i=0; i<n; i++) {  
+    int n;
+    int len=4;   
+    for (int i=0; i<len; i++) {  
         if (V[i].y <= P.y) {          
             if (V[i+1].y  > P.y)     
                  if (isLeft( V[i], V[i+1], P) > 0)  
-                     ++wn;           
+                     ++n;           
         }
         else {
             if (V[i+1].y  <= P.y)   
                  if (isLeft( V[i], V[i+1], P) < 0) 
-                     --wn;         
+                     --n;         
         }
     }
-    return wn;
+    return n;
 }
+
 int main() {
-    struct Point P;
-    int n = 5;
-    struct Point V[5]={{-3,2},{-2,-0.8}, {0,1.2}, {2.2,0}, {2,4.5}}; 
-    cin >> P.x >> P.y ;     
-    int res = Pnt_Poly(P , V , n) ;
+    string s ;
+    vector <int> temp;
+    getline(cin,s);
+    string input1 = s.substr(s.find('['),s.rfind(']')-s.find('['));
+    for(int i=0;i< input1.length();i++){
+        if(isdigit(input1[i])|| input1[i]=='-' || input1[i]=='.' || input1[i] == ',' ){
+            temp.push_back(int(input1[i])-48);
+        }
+    }
+    for(int i=0; i< temp.size() ;i++){
+        cout << temp[i];
+    }
+    int n = temp.size()/2;
+    struct Point V[n];
+    for(int i=0;i<n;i++){
+        V[i].x=temp[2*i];
+        V[i].y=temp[2*i+1];
+    }
+    string s2;
+    getline(cin,s2);
+    string input2 = s2.substr(s2.find('['),s2.rfind(']')-s2.find('['));
+    cout << input2;
+    
+    struct Point P; 
+    int res=Pnt_Poly(P,V);
     if(res==0){
-        cout<<"False"; }
+        cout << "False";
+    }
     else{
-        cout << "True";
+        cout <<"True";
     }
     return 0;
 }
