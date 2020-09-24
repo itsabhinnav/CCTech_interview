@@ -1,18 +1,4 @@
-input coordinates
-input point
-if coordinates == collinear:
-    return false
-else:
-    polygons = form_polygon(coordinates)
-for polygon in polygons:
-    if polygon == simple:
-        if point in polygon:
-            return true
-        else:
-            continue
-    else:
-        if point in polygon:
-            return true
-        else:
-            return false
-
+### CCtech interview
+### Program 1 : Check if the given point lies inside or outside a polygon?
+Solution : polygon.py
+Programming Language : Python v3.8
