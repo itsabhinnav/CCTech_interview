@@ -44,9 +44,9 @@ if point.x < V[0].x :
     else:
       t = intersection_horizontal(point,V[i-1],V[i+1],V[i+2])
       dis = horizontal_distance(t,V[i+2])
-  surface = h+r+dis
-  print(surface)
+  surfaceLength = h+r+dis
+  print(surfaceLength)
 elif p.x >= vertices[0].x and p.x <= vertices[len(vertices)].x:
-  print(0)  
+  print("Still handling this case")  
 else:
-  print(0)
+  print("still andling this case as well")
