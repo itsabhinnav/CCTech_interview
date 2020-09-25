@@ -37,8 +37,10 @@ if point.x < V[0].x :
   dis=0
   for i in range(4,len(V)-2,2): 
     tmp = iv(point,V[i-1],V[i],V[i+1])
-    if tmp.y < V[i+1].y:
+    if tmp.y < V[i+1].y and tmp.y > V[i].y:
       dis = vd(tmp,V[i+1])+hd(V[i+1],V[i+2])
+    elif tmp.y < V[i].y:
+      dis = vd(V[i],V[i+1]+hd(V[i+1]),V[i+2]) """ Handle special case if buildings are farther """
     else:
       t = ih(point,V[i-1],V[i+1],V[i+2])
       dis = hd(t,V[i+2])
